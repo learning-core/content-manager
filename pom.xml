@@ -36,6 +36,11 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
 		<!-- devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,6 +105,38 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>2.4.9</version>
+				<executions>
+				<!-- SWAGGER Content-manager-->
+					<execution>
+					<id>generate-provider-service-interface</id>
+					<phase>generate-resources</phase>
+					<goals>
+						<goal>generate</goal>
+					</goals>
+					<configuration>
+						<inputSpec>src/main/resources/swagger/content-manager.yaml</inputSpec>
+						<language>spring</language>
+						<library>spring-boot</library>
+						<modelPackage>br.com.wolfleaning.contentmanager.client.presentation.representation</modelPackage>
+						<apiPackage>br.com.wolfleaning.contentmanager.client.presentation.api</apiPackage>
+						<invokerPackage>br.com.wolfleaning.contentmanager.client.presentation</invokerPackage>
+						<generateSupportingFiles>true</generateSupportingFiles>
+						<generateApiTests>false</generateApiTests>
+							<configOptions>
+								<dateLibrary>java8</dateLibrary>
+							</configOptions>
+							<environmentVariables>
+								<supportingFiles>ApiClient.java,Authentication.java,OAuth.java,ApiKeyAuth.java,HttpBasicAuth.java,RFC3339DateFormat.java</supportingFiles>
+							</environmentVariables>
+							<modelNameSuffix>Representation</modelNameSuffix>
+					</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

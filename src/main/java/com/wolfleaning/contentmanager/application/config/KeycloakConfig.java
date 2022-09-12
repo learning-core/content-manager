@@ -1,4 +1,4 @@
-package com.wolfleaning.contentmanager.config;
+package com.wolfleaning.contentmanager.application.config;
 
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.springframework.context.annotation.Bean;

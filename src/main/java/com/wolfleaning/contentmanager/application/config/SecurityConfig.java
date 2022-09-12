@@ -1,4 +1,4 @@
-package com.wolfleaning.contentmanager.config;
+package com.wolfleaning.contentmanager.application.config;
 
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
