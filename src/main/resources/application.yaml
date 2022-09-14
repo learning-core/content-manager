@@ -1,6 +1,16 @@
+spring:
+  application:
+    name: content-manager
+    description: orquestrador de gerenciamento de conteudos (cursos , aulas)
 
-keycloak:
- auth-server-url: http://localhost:8080/auth
- realm: SpringBootKeycloak
- resource: "login-app"
- public-client: true
+    security:
+      user:
+        name: "admin"
+      oauth2:
+        resource-server:
+          jwt:
+            issuer-uri: http://localhost:8081/auth/reals/wolflearning
+            set-uri: http://localhost:8081/auth/realms/wolflearning/protocolo/openid-connect/certs
+
+server:
+  port: 8080

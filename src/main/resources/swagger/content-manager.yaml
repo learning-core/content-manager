@@ -1,91 +1,79 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "serviço de gerenciamento de curso"
-  version: "1.0.0"
-  title: "Wolf Learning"
-host: "localhost:8080"
-basePath: "/content-manager"
+  version: 1.0.0
+  title: WolfLearning
+  description: Serviço gerenciador de conteudo, Cursos e Aulas
+host: localhost:8080
 schemes:
-  - "https"
-  - "http"
+  - http
 paths:
-
-  /buscar-curso{idCurso}:
-    get:
-      tags:
-        - "Obter"
-      summary: "obter curso"
-      description: ""
-      produces:
-        - application/json
-      responses:
-        "200":
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/returnModel"
-        "405":
-          description: "Invalid input"
-        "404":
-          description: "Not found"
-        "500":
-          description: "Internal server error"
-      security:
-        - OAuth2: []
-    parameters:
-      - type: string
-        in: path
-        name: idCurso
-        description: "id do curso desejado"
-        required: true
   /cadastrar:
     post:
       tags:
-        - "Cadastrar"
-      summary: "atualiza lista de amigos"
-      description: ""
+        - Cadastrar Curso
+      operationId: SalvarCurso
+      consumes:
+        - application/json
+      produces:
+        - application/json
       parameters:
-        - in: "body"
-          name: "body"
-          description: "objeto de usuario necessario para criacao"
-          required: true
+        - in: body
+          name: body
           schema:
-            $ref: "#/definitions/cursoModel"
+            $ref: '#/definitions/CursoModel'
       responses:
-        "200":
-          description: "successful operation"
+        '200':
+          description: Ok
+        '400':
+          description: Bad Request
           schema:
-            $ref: "#/definitions/cursoModel"
-        "405":
-          description: "Invalid input"
-        "404":
-          description: "Not found"
-        "500":
-          description: "Internal server error"
+            $ref: '#/definitions/Erro'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Erro'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Erro'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Erro'
       security:
         - OAuth2: []
-
 
 securityDefinitions:
   OAuth2:
     type: oauth2
-    flow: application
-    tokenUrl: "http://localhost:8081/auth"
+    flow: accessCode
+    tokenUrl: 'localhost:8091/auth/oauth/v2/token-jwt'
+    authorizationUrl: 'localhost:8091/v1/openid/connect/jwks.json'
+    scopes: {}
 
 definitions:
-  cursoModel:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      horario:
-        type: string
-      status:
-        type: string
-  returnModel:
-    type: "object"
+  CursoModel:
+    type: array
+    items:
+      type: object
+      properties:
+        nome:
+          type: string
+        categoria:
+          type: integer
+          format: int64
+        data:
+          type: string
+
+    required:
+      - nome
+      - categoria
+
+  Erro:
+    type: object
     properties:
       code:
         type: integer
       message:
         type: string
+        example: erro de validacao

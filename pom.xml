@@ -47,12 +47,9 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<version>2.7.3</version>
 		</dependency>
-		<!-- dependency keycloak -->
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-spring-boot-starter</artifactId>
-		</dependency>
-		<!-- dependency spring-security -->
+
+
+		<!-- dependency spring-security
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -61,7 +58,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<!-- dependency spring-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -79,18 +76,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- spring security oauth2 resource server
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-resource-server</artifactId>
+			<version>5.7.3</version>
+		</dependency> -->
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.keycloak.bom</groupId>
-				<artifactId>keycloak-adapter-bom</artifactId>
-				<version>13.0.1</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+
 
 	<build>
 		<plugins>
@@ -122,18 +115,16 @@
 						<inputSpec>src/main/resources/swagger/content-manager.yaml</inputSpec>
 						<language>spring</language>
 						<library>spring-boot</library>
-						<modelPackage>br.com.wolfleaning.contentmanager.client.presentation.representation</modelPackage>
-						<apiPackage>br.com.wolfleaning.contentmanager.client.presentation.api</apiPackage>
-						<invokerPackage>br.com.wolfleaning.contentmanager.client.presentation</invokerPackage>
-						<generateSupportingFiles>true</generateSupportingFiles>
+						<modelPackage>br.com.wolfleaning.contentmanager.presentation.representation</modelPackage>
+						<apiPackage>br.com.wolfleaning.contentmanager.provider.api</apiPackage>
+						<configOptions>
+							<dateLibrary>java8</dateLibrary>
+							<interfaceOnly>true</interfaceOnly>
+							<delegatePattern>true</delegatePattern>
+						</configOptions>
+						<modelNameSuffix>Representation</modelNameSuffix>
+						<generateSupportingFiles>false</generateSupportingFiles>
 						<generateApiTests>false</generateApiTests>
-							<configOptions>
-								<dateLibrary>java8</dateLibrary>
-							</configOptions>
-							<environmentVariables>
-								<supportingFiles>ApiClient.java,Authentication.java,OAuth.java,ApiKeyAuth.java,HttpBasicAuth.java,RFC3339DateFormat.java</supportingFiles>
-							</environmentVariables>
-							<modelNameSuffix>Representation</modelNameSuffix>
 					</configuration>
 					</execution>
 				</executions>
