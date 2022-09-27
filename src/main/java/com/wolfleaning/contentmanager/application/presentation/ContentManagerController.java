@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContentManagerController implements CadastrarApi {
     @Override
     public ResponseEntity<Void> salvarCurso(CursoModelRepresentation body) {
+
         return ResponseEntity.ok().build();
     }
 }

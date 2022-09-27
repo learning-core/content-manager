@@ -3,15 +3,16 @@ package com.wolfleaning.contentmanager.application.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+/*import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.SecurityFilterChain;*/
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class BasicConfiguration {
+   /*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http
@@ -34,5 +35,6 @@ public class BasicConfiguration {
         authenticationConverter.setJwtGrantedAuthoritiesConverter(converter);
         return authenticationConverter;
     }
+    */
 
 }

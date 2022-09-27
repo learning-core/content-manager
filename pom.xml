@@ -49,22 +49,22 @@
 		</dependency>
 
 
-		<!-- dependency spring-security -->
+		<!-- dependency spring-security
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
+		</dependency>-->
+		<!--<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency>-->
 		<!-- spring security oauth2 resource server -->
-		<dependency>
+		<!--<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-oauth2-resource-server</artifactId>
     		<version>5.7.3</version>
-		</dependency>
+		</dependency>-->
 		<!-- dependency spring-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
