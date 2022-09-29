@@ -3,13 +3,13 @@ spring:
     name: content-manager
     description: orquestrador de gerenciamento de conteudos (cursos , aulas)
 
-  security:
-     oauth2:
-       resource-server:
-         jwt:
-           issuer-uri: http://localhost:8089/auth/reals/wolflearning
-           set-uri: http://localhost:8089/auth/realms/wolflearning/protocolo/openid-connect/certs
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: 'http://localhost:8089/auth/realms/wolflearning'
+          set-uri: 'http://localhost:8089/auth/realms/wolflearning/protocolo/openid-connect/certs'
 server:
   port: 8080
 

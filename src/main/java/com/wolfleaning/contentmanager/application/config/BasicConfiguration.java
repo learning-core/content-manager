@@ -23,29 +23,4 @@ public class BasicConfiguration {
                 .jwt();
         return http.build();
     }
-   /*
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        return http
-                .cors()
-                .and().
-                authorizeRequests().
-                antMatchers(HttpMethod.POST).
-                hasRole("api").
-                anyRequest().
-                authenticated().and()
-                .oauth2ResourceServer().and()
-        .build();
-
-    }
-    private JwtAuthenticationConverter getJwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
-        converter.setAuthoritiesClaimName("authorities");
-        converter.setAuthorityPrefix("");
-        JwtAuthenticationConverter authenticationConverter = new JwtAuthenticationConverter();
-        authenticationConverter.setJwtGrantedAuthoritiesConverter(converter);
-        return authenticationConverter;
-    }
-    */
-
 }
