@@ -7,8 +7,14 @@ spring:
      oauth2:
        resource-server:
          jwt:
-           issuer-uri: http://localhost:8081/auth/reals/wolflearning
-           set-uri: http://localhost:8081/auth/realms/wolflearning/protocolo/openid-connect/certs
+           issuer-uri: http://localhost:8089/auth/reals/wolflearning
+           set-uri: http://localhost:8089/auth/realms/wolflearning/protocolo/openid-connect/certs
 
 server:
   port: 8080
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
