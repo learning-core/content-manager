@@ -20,10 +20,47 @@ paths:
         - in: body
           name: body
           schema:
-            $ref: '#/definitions/CursoModel'
+            $ref: '#/definitions/Curso'
       responses:
         '200':
           description: Ok
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Erro'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Erro'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Erro'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Erro'
+      security:
+        - OAuth2: []
+  /cadastrar-modulo:
+    post:
+      tags:
+        - Cadastrar Modulo
+      operationId: CadastrarModulo
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/Modulo'
+      responses:
+        '200':
+          description: Sucess
+          schema:
+            $ref: '#/definitions/Response'
         '400':
           description: Bad Request
           schema:
@@ -52,22 +89,64 @@ securityDefinitions:
     scopes: {}
 
 definitions:
-  CursoModel:
+  Curso:
     type: array
     items:
       type: object
       properties:
         nome:
           type: string
+        descricao:
+          type: string
+        idioma:
+          type: string
+        imagem:
+          type: string
         categoria:
-          type: integer
-          format: int64
+          type: string
         data:
           type: string
-
     required:
       - nome
+      - descricao
       - categoria
+
+  Modulo:
+    type: array
+    items:
+      type: object
+      properties:
+        nome:
+          type: string
+        turmas:
+          type: string
+        disponibilidade:
+          type: boolean
+        conteudo:
+          $ref: '#/definitions/Conteudo'
+
+  Conteudo:
+    type: array
+    items:
+      type: object
+      properties:
+        cursoid:
+          type: string
+        dataPublicacao:
+          type: string
+        autor:
+          type: string
+        conteudoTipo:
+          type: string
+
+  Response:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+        example: erro de validacao
 
   Erro:
     type: object
